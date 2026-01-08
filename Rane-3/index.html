@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rane's CreamBerg | Luxury Ice Cream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-cocoa: #2D1B10;
+            --cream-vanilla: #F5F5DC;
+            --salted-caramel: #C68E17;
+            --white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream-vanilla);
+            color: var(--deep-cocoa);
+            overflow-x: hidden;
+        }
+
+        /* --- PRE-LOADER --- */
+        #loader-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--cream-vanilla);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .loader-icon {
+            width: 60px; height: 60px;
+            border: 6px solid rgba(45, 27, 16, 0.1);
+            border-top: 6px solid var(--salted-caramel);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        .loader-text { font-family: 'Playfair Display'; font-size: 1.2rem; color: var(--deep-cocoa); }
+        .loader-hidden { opacity: 0; visibility: hidden; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 80px; display: flex;
+            justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(245, 245, 220, 0.7);
+            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(45, 27, 16, 0.1);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; }
+        nav ul { display: flex; list-style: none; gap: 40px; }
+        nav ul li a { text-decoration: none; color: var(--deep-cocoa); font-weight: 700; transition: 0.3s; }
+        nav ul li a:hover { color: var(--salted-caramel); }
+
+        /* --- HERO SECTION --- */
+        .hero { height: 100vh; display: flex; align-items: center; padding: 0 100px; position: relative; }
+        .hero-text { width: 50%; z-index: 10; opacity: 0; transform: translateX(-50px); animation: slideIn 1s forwards 0.5s; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 5.5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text span { color: var(--salted-caramel); }
+        
+        .cta-btn {
+            display: inline-block; padding: 18px 40px;
+            background-color: var(--deep-cocoa); color: white;
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; margin-top: 30px; transition: 0.3s;
+            border: none; cursor: pointer;
+        }
+        .cta-btn:hover { transform: scale(1.1); background-color: var(--salted-caramel); }
+
+        .graphics-container { position: absolute; right: 0; width: 50%; height: 100%; display: flex; justify-content: center; align-items: center; }
+        .circle-bg {
+            position: absolute; width: 700px; height: 700px; background: var(--deep-cocoa);
+            border-radius: 50%; right: -150px; z-index: 1; animation: grow 1.5s ease-out;
+        }
+        .main-scoop { width: 450px; z-index: 5; animation: float 4s ease-in-out infinite; }
+        .side-scoop { position: absolute; width: 150px; z-index: 6; }
+        .scoop-1 { top: 15%; right: 40%; animation: float 6s ease-in-out infinite; }
+        .scoop-2 { bottom: 15%; right: 30%; animation: float 5s ease-in-out infinite reverse; }
+
+        /* --- FLAVORS SECTION --- */
+        .section-flavors { padding: 120px 0; background-color: var(--deep-cocoa); perspective: 1200px; }
+        .flavor-container { display: flex; justify-content: center; gap: 30px; padding: 40px; flex-wrap: wrap; }
+        .flavor-card {
+            position: relative; min-width: 300px; height: 480px;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px);
+            border-radius: 40px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d; padding: 20px;
+        }
+        .flavor-card:hover { transform: scale(1.05) translateY(-20px) rotateY(5deg); border: 1px solid var(--salted-caramel); box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5); z-index: 100; }
+        .flavor-container:hover .flavor-card:not(:hover) { filter: blur(4px) brightness(0.5); transform: scale(0.9); }
+        .flavor-card img { width: 240px; transition: transform 0.6s ease; filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6)); }
+        .flavor-card:hover img { transform: translateZ(60px) scale(1.1); }
+        .flavor-info { text-align: center; margin-top: 20px; color: white; }
+
+        /* --- STORY SECTION --- */
+        .story-section { position: relative; padding: 150px 100px; background-color: var(--cream-vanilla); overflow: hidden; display: flex; align-items: center; }
+        .story-content { width: 60%; z-index: 10; }
+        .story-content h2 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 20px; }
+        .parallax-item { position: absolute; z-index: 1; opacity: 0.6; pointer-events: none; }
+        .vanilla-bean { top: 10%; right: 10%; width: 250px; }
+        .chocolate-chunk { bottom: 10%; left: 5%; width: 180px; }
+
+        /* --- FRANCHISE SECTION --- */
+        .franchise-section { padding: 100px 80px; background-color: #ffffff; }
+        .bento-grid { 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr; 
+            grid-template-rows: repeat(2, 1fr); 
+            gap: 20px; margin-top: 50px; 
+        }
+        .bento-item { 
+            background: var(--cream-vanilla); padding: 40px; border-radius: 30px; 
+            border: 1px solid rgba(45, 27, 16, 0.1); transition: 0.3s;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .item-large { grid-row: span 2; }
+        .item-accent { background: var(--deep-cocoa); color: white; }
+        .franchise-form { display: flex; flex-direction: column; gap: 15px; }
+        .franchise-form input { padding: 15px; border-radius: 12px; border: 1px solid #ddd; width: 100%; font-family: inherit; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(5deg); } }
+        @keyframes grow { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 992px) {
+            nav { padding: 15px 30px; }
+            .hero-text h1 { font-size: 4rem; }
+            .hero { padding: 0 40px; }
+        }
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero { flex-direction: column; text-align: center; height: auto; padding: 120px 20px 60px; }
+            .hero-text { width: 100%; transform: none; }
+            .hero-text h1 { font-size: 3.2rem; }
+            .graphics-container { position: relative; width: 100%; height: 400px; margin-top: 50px; }
+            .circle-bg { width: 350px; height: 350px; right: 50%; transform: translateX(50%); top: 0; }
+            .main-scoop { width: 280px; }
+            .flavor-card { min-width: 100%; }
+            .story-section { flex-direction: column; padding: 80px 20px; text-align: center; }
+            .story-content { width: 100%; }
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .item-large { grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loader-icon"></div>
+        <div class="loader-text">Churning Joy...</div>
+    </div>
+
+    <nav>
+        <div class="logo">Rane's CreamBerg</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#flavors">Flavors</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#franchise">Franchise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Make Your <br>Sweet Dream <span>Come True</span></h1>
+            <p>Indulge in a delightful journey of flavors! Discover creamy, delicious ice creams crafted to bring joy to every scoop.</p>
+            <a href="#flavors" class="cta-btn">Explore Flavors</a>
+        </div>
+        <div class="graphics-container">
+            <div class="circle-bg"></div>
+            <img src="frenchVanilla-removebg-preview.png" alt="Vanilla" class="main-scoop">
+            <img src="pista.png" alt="Pistachio" class="side-scoop scoop-1">
+            <img src="mango.png" alt="Mango" class="side-scoop scoop-2">
+        </div>
+    </section>
+
+    <section id="flavors" class="section-flavors">
+        <h2 style="color:white; text-align: center; font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 40px;">Signature Scoops</h2>
+        <div class="flavor-container">
+            <div class="flavor-card">
+                <img src="product2.png" alt="Classic Vanilla">
+                <div class="flavor-info"><h3>Classic Vanilla</h3><p>Madagascar Bean</p></div>
+            </div>
+            <div class="flavor-card">
+                <img src="product1.png" alt="Dark Cocoa">
+                <div class="flavor-info"><h3>Dark Cocoa</h3><p>70% Belgian</p></div>
+            </div>
+            <div class="flavor-card">
+                <img src="product3.png" alt="Roasted Nut">
+                <div class="flavor-info"><h3>Roasted Nut</h3><p>Sicilian Pistachio</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="story-section">
+        <img src="about1.png" class="parallax-item vanilla-bean" data-speed="2">
+        <img src="about2.png" class="parallax-item chocolate-chunk" data-speed="-1">
+        <div class="story-content">
+            <h2>Our Scoop Story</h2>
+            <p>Rane’s CreamBerg started with a simple dream: to turn the finest organic ingredients into moments of pure happiness.</p>
+            <p style="margin-top: 15px;">Today, every scoop we serve is a tribute to that heritage. We craft experiences, not just desserts.</p>
+        </div>
+    </section>
+
+    <section id="franchise" class="franchise-section">
+        <h2 style="text-align: center; margin-bottom: 40px; font-family: 'Playfair Display'; font-size: 3rem;">Join the Family</h2>
+        <div class="bento-grid">
+            <div class="bento-item item-large">
+                <h3>Franchise Inquiry</h3>
+                <form class="franchise-form">
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="text" placeholder="Full Name">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <input type="text" placeholder="Target City" style="margin-top: 10px;">
+                    <button type="submit" class="cta-btn" style="width: 100%;">Send Application</button>
+                </form>
+            </div>
+            <div class="bento-item">
+                <h4 style="color: var(--salted-caramel);">01. Support</h4>
+                <p>Full training provided by our master creamers.</p>
+            </div>
+            <div class="bento-item item-accent">
+                <h4>02. Growth</h4>
+                <p>Access our 2026 expansion roadmap.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" style="background: var(--deep-cocoa); color: white; padding: 60px 20px; text-align: center;">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2rem;">Rane's CreamBerg</h2>
+        <p style="opacity: 0.7; margin-top: 10px;">123 Sweet Street, Dessert Valley</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.4;">&copy; 2026 Rane's CreamBerg. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader-wrapper');
+            setTimeout(() => { loader.classList.add('loader-hidden'); }, 1000);
+        });
+
+        window.addEventListener('scroll', function() {
+            const items = document.querySelectorAll('.parallax-item');
+            let scrollValue = window.scrollY;
+            items.forEach(item => {
+                let speed = item.getAttribute('data-speed');
+                item.style.transform = `translateY(${scrollValue * speed * 0.1}px) rotate(${scrollValue * 0.02}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
