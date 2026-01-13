@@ -1,0 +1,100 @@
+/* footer.css */
+
+/* Basic Variables (In case main CSS isn't loaded) */
+:root {
+  --primary-color: #7D1C7A;
+  --accent-color: #E91E63;
+  --white: #ffffff;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding-top: 4rem;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem 4rem 1rem;
+}
+
+.footer__col .logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  font-family: "Titan One", cursive;
+}
+
+.footer__col .logo span {
+  color: var(--accent-color);
+  background: #fff;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+}
+
+.footer__links a {
+  font-weight: 500;
+  color: #f3e5f5;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+.footer__links a:hover {
+  color: var(--accent-color);
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.socials a {
+  color: var(--white);
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: var(--accent-color);
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #f3e5f5;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+/* RESPONSIVE */
+@media (width > 768px) {
+  .footer__container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer__links {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}

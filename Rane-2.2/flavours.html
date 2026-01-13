@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="flavours.css" />
+    <link rel="stylesheet" href="footer.css" />
+    
+    <title>All Flavours | Rane-2.1</title>
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header class="page__header">
+        <h1 class="section__header">Our Complete Collection</h1>
+        <p class="section__description">From classic favorites to exotic new tastes</p>
+    </header>
+
+    <section class="section__container popular__container">
+      <div class="popular__grid">
+        
+        <div class="popular__card">
+          <div class="card__image">
+             <img src="assets/popular-1.png" alt="Mango" />
+          </div>
+          <div class="popular__card__content">
+            <h4>Mango Tango Sorbet</h4>
+          </div>
+        </div>
+        
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/popular-2.png" alt="Chocolate" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Chocolate Fudge Delight</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/popular-3.png" alt="Strawberry" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Strawberry Swirl Bliss</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/discover-1.jpg" alt="Cookie" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Cookie Monster Crunch</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/discover-2.jpg" alt="Berry" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Wild Berry Cheesecake</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/discover-3.jpg" alt="Vanilla" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Classic Vanilla Bean</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/popular-2.png" alt="Mint" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Mint Choco Chip</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/popular-1.png" alt="Butterscotch" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Golden Butterscotch</h4>
+          </div>
+        </div>
+
+        <div class="popular__card">
+           <div class="card__image">
+              <img src="assets/popular-3.png" alt="Coffee" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Roasted Coffee Buzz</h4>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="banner">
+      <div class="banner__content">
+        <h2 class="section__header" style="color: white;">Can't decide?</h2>
+        <p class="section__description" style="color: #f3e5f5;">
+            Visit our store to try free samples of any flavor!
+        </p>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // 1. Fetch and load the navbar
+        fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+
+            // Mobile menu logic (only runs after navbar loads)
+            const menuBtn = document.getElementById("menu-btn");
+            const navLinks = document.getElementById("nav-links");
+            const menuBtnIcon = menuBtn ? menuBtn.querySelector("i") : null;
+
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener("click", (e) => {
+                    navLinks.classList.toggle("open");
+                    const isOpen = navLinks.classList.contains("open");
+                    menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+                });
+                navLinks.addEventListener("click", (e) => {
+                    navLinks.classList.remove("open");
+                    menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+                });
+            }
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+
+        // 2. Fetch and load the footer
+        fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+    </script>
+  </body>
+</html>
