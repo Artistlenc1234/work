@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rane's Creamberg</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="footer.css" />
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header id="home">
+      <div class="header__image">
+        <img src="assets/header.png" alt="Delicious Ice Cream" />
+      </div>
+      <div class="header__content">
+        <h1>MAKE YOUR <span>SWEET DREAM</span> COME TRUE</h1>
+        <p class="section__description">
+          Indulge in a delightful journey of flavors! Discover creamy, delicious
+          ice creams crafted to bring joy to every scoop. Welcome to your sweet
+          escape!
+        </p>
+
+        <div class="header__btn">
+          <a href="flavours.html" class="btn">Explore</a>
+        </div>
+
+        <ul class="socials">
+          <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+          <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="section__container popular__container" id="menu">
+      <h2 class="section__header">Popular Ice-Cream</h2>
+      <div class="popular__grid">
+        <div class="popular__card">
+          <img src="assets/popular-1.png" alt="Mango Tango" />
+          <div class="popular__card__content">
+            <h4>Mango Tango Sorbet</h4>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/popular-2.png" alt="Chocolate Fudge" />
+          <div class="popular__card__content">
+            <h4>Chocolate Fudge Delight</h4>
+          </div>
+        </div>
+        <div class="popular__card">
+          <img src="assets/popular-3.png" alt="Strawberry Swirl" />
+          <div class="popular__card__content">
+            <h4>Strawberry Swirl Bliss</h4>
+          </div>
+        </div>
+      </div>
+      <div class="popular__btn">
+        <a href="flavours.html" class="btn">Explore Flavours</a>
+      </div>
+    </section>
+
+    <section class="section__container discover__container" id="categories">
+      <h2 class="section__header">Most Selling Ice-Cream</h2>
+      <p class="section__description">
+        Discover our crowd favorites! These ice creams are loved by everyone and
+        have become the top picks for their irresistible flavors.
+      </p>
+      <div class="discover__grid">
+        <div class="discover__card">
+          <img src="assets/discover-1.jpg" alt="Double Chocolate" />
+          <div class="discover__card__content">
+            <h4>Double Chocolate Crunch</h4>
+            <p class="section__description">
+              Dive into a chocolate lover's paradise with our Double Chocolate Crunch.
+            </p>
+          </div>
+        </div>
+        <div class="discover__card">
+          <img src="assets/discover-2.jpg" alt="Strawberry Cheesecake" />
+          <div class="discover__card__content">
+            <h4>Strawberry Cheesecake Bliss</h4>
+            <p class="section__description">
+              Experience the perfect harmony of fruity and creamy with our Strawberry Cheesecake Bliss.
+            </p>
+          </div>
+        </div>
+        <div class="discover__card">
+          <img src="assets/discover-3.jpg" alt="Cookies and Cream" />
+          <div class="discover__card__content">
+            <h4>Classic Cookies and Cream</h4>
+            <p class="section__description">
+              Savor the timeless charm of our Classic Cookies and Cream ice cream.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner">
+      <div class="banner__image"></div>
+      <div class="banner__content">
+        <h2 class="section__header">
+          Get Yummy Ice-Cream at a Reasonable Price
+        </h2>
+        <p class="section__description">
+          Treat yourself to delightful ice creams without breaking the bank!
+        </p>
+        <div class="banner__flex">
+          <div class="banner__card">
+            <img src="assets/banner-1.png" alt="Fresh" />
+            <h4>Fresh & Natural</h4>
+          </div>
+          <div class="banner__card">
+            <img src="assets/banner-2.png" alt="Quick Packaging" />
+            <h4>Quick Packaging</h4>
+          </div>
+          <div class="banner__card">
+            <img src="assets/banner-3.png" alt="Fast Delivery" />
+            <h4>Fast Delivery</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <script>
+        // Load Navbar
+        fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+            
+            // Re-initialize Menu Logic after HTML injection
+            const menuBtn = document.querySelector(".nav__menu__btn");
+            const navLinks = document.querySelector(".nav__links");
+            const menuBtnIcon = menuBtn ? menuBtn.querySelector("i") : null;
+            
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener("click", () => {
+                    navLinks.classList.toggle("open");
+                    const isOpen = navLinks.classList.contains("open");
+                    if(menuBtnIcon) {
+                        menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+                    }
+                });
+                
+                navLinks.addEventListener("click", () => {
+                    navLinks.classList.remove("open");
+                    if(menuBtnIcon) {
+                        menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+                    }
+                });
+            }
+        });
+
+        // Load Footer
+        fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        });
+
+        // Initialize ScrollReveal (Optional animation)
+        const scrollRevealOption = {
+            distance: "50px",
+            origin: "bottom",
+            duration: 1000,
+        };
+        ScrollReveal().reveal(".header__image img", { ...scrollRevealOption, origin: "right" });
+        ScrollReveal().reveal(".header__content h1", { ...scrollRevealOption, delay: 500 });
+        ScrollReveal().reveal(".header__content p", { ...scrollRevealOption, delay: 1000 });
+        ScrollReveal().reveal(".header__content .header__btn", { ...scrollRevealOption, delay: 1500 });
+        ScrollReveal().reveal(".popular__card", { ...scrollRevealOption, interval: 500 });
+    </script>
+  </body>
+</html>

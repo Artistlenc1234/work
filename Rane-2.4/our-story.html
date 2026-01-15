@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="our-story.css" />
+    <link rel="stylesheet" href="footer.css" />
+    
+    <title>Our Story | Rane's CreamBerg</title>
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header class="page__header">
+        <h1 class="section__header scramble-text">The CreamBerg Journey</h1>
+        <p class="section__description fade-up">Crafting sweet memories, one scoop at a time.</p>
+    </header>
+
+    <section class="section__container story__container">
+      <div class="story__grid">
+        <div class="story__image fade-up">
+           <img src="assets/header.png" alt="Our Shop" />
+        </div>
+        <div class="story__content">
+            <h3 class="scramble-text">How It All Started</h3>
+            
+            <div class="fade-up">
+                <p>
+                    It began with a simple craving for <strong>real</strong> ice cream. 
+                    In 2020, Rane's CreamBerg started as a small family kitchen experiment. 
+                    We were tired of artificial flavors and icy textures. We wanted 
+                    creamy, velvety richness that melts in your mouth.
+                </p>
+                <p>
+                    Today, we are proud to serve over 50+ unique flavors, hand-crafted 
+                    daily using locally sourced milk and the freshest fruits.
+                </p>
+            </div>
+            
+            <div class="stats__flex fade-up">
+                <div class="stat__card">
+                    <h4>5+</h4>
+                    <p>Years</p>
+                </div>
+                <div class="stat__card">
+                    <h4>50+</h4>
+                    <p>Flavors</p>
+                </div>
+                <div class="stat__card">
+                    <h4>10k+</h4>
+                    <p>Happy Customers</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values__section">
+        <div class="section__container">
+            <h2 class="section__header scramble-text" style="color: white;">Our Secret Ingredients</h2>
+            <div class="values__grid">
+                <div class="value__card fade-up">
+                    <i class="ri-plant-line"></i>
+                    <h4>100% Natural</h4>
+                    <p>No preservatives. No artificial colors. Just pure nature.</p>
+                </div>
+                <div class="value__card fade-up">
+                    <i class="ri-heart-3-line"></i>
+                    <h4>Made with Love</h4>
+                    <p>Every batch is churned slowly to ensure the perfect texture.</p>
+                </div>
+                <div class="value__card fade-up">
+                    <i class="ri-goblet-line"></i>
+                    <h4>Premium Milk</h4>
+                    <p>Sourced directly from local dairy farms every morning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // 1. Load Components
+        fetch("navbar.html").then(r => r.text()).then(d => {
+            document.getElementById("navbar-placeholder").innerHTML = d;
+            setTimeout(() => {
+                const menuBtn = document.getElementById("menu-btn");
+                const navLinks = document.getElementById("nav-links");
+                if (menuBtn && navLinks) {
+                    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+                }
+            }, 500);
+        });
+        fetch("footer.html").then(r => r.text()).then(d => document.getElementById("footer-placeholder").innerHTML = d);
+
+        /* 2. SCATTERED TEXT ANIMATION SCRIPT 
+           This script breaks sentences into words and assigns random positions
+        */
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // A. Prepare the Scattered Text
+            const scrambleElements = document.querySelectorAll(".scramble-text");
+            
+            scrambleElements.forEach(el => {
+                const text = el.innerText;
+                const words = text.split(" "); // Split sentence into words
+                
+                el.innerHTML = ""; // Clear original text
+                
+                words.forEach((word, index) => {
+                    const span = document.createElement("span");
+                    span.innerText = word + " "; // Add space back
+                    span.classList.add("word-span");
+                    
+                    // Generate Random Positions (-80px to +80px)
+                    const randomX = Math.floor(Math.random() * 160) - 80;
+                    const randomY = Math.floor(Math.random() * 160) - 80;
+                    const randomRotate = Math.floor(Math.random() * 30) - 15;
+                    
+                    // Apply the random start position inline
+                    span.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+                    
+                    // Add delay so they don't all fly in at once
+                    span.style.transitionDelay = `${index * 50}ms`;
+                    
+                    el.appendChild(span);
+                });
+            });
+
+            // B. The Observer (Triggers animation when you scroll)
+            const observerOptions = {
+                threshold: 0.2 // Trigger when 20% of element is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        // Optional: Stop observing once animated
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            // Observe Scattered Text
+            scrambleElements.forEach(el => observer.observe(el));
+            
+            // Observe Fade Up Elements
+            const fadeElements = document.querySelectorAll(".fade-up");
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+  </body>
+</html>
