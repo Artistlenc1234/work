@@ -1,0 +1,114 @@
+/* navbar.css */
+
+/* --- Mobile / Default Styles --- */
+nav {
+  position: fixed;
+  isolation: isolate;
+  width: 100%;
+  z-index: 9;
+  /* Uses variable from your main styles.css */
+  background-color: var(--primary-color, #7D1C7A); 
+}
+
+.nav__header {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.nav__menu__btn {
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.nav__links {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--primary-color, #7D1C7A);
+  transition: transform 0.5s;
+  z-index: -1;
+  transform: translateY(-100%); /* Hidden by default on mobile */
+}
+
+/* Class to show menu on mobile */
+.nav__links.open {
+  transform: translateY(100%); /* Moves it down to be visible */
+}
+
+.nav__links a {
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav__links a:hover {
+  color: var(--accent-color, #E91E63);
+}
+
+.nav__btns {
+  display: none;
+}
+
+/* --- Desktop Styles (Media Query) --- */
+@media (width > 768px) {
+  nav {
+    position: static; 
+    padding: 1.5rem 2rem;
+    
+    /* UPDATED: Forces full width */
+    width: 100%;
+    max-width: 100%; 
+    margin: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: var(--primary-color, #7D1C7A);
+  }
+
+  .nav__logo img {
+    height: 70px; 
+  }
+
+  .nav__menu__btn {
+    display: none; 
+  }
+
+  .nav__links {
+    position: static;
+    width: fit-content;
+    padding: 0;
+    flex-direction: row;
+    background-color: transparent;
+    transform: none !important;
+    margin-left: auto; 
+  }
+
+  .nav__links a {
+    color: #ffffff;
+  }
+}
