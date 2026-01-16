@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="gallery.css" />
+    <link rel="stylesheet" href="footer.css" />
+    
+    <title>Gallery | Rane's CreamBerg</title>
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header class="page__header">
+        <h1 class="section__header">Sweet Moments</h1>
+        <p class="section__description">A glimpse into our world of happiness.</p>
+    </header>
+
+    <section class="gallery__section">
+        <div class="gallery__grid">
+            
+            <div class="gallery__item">
+                <img src="assets/popular-1.png" alt="Mango Sorbet">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/header.png" alt="Shop Interior">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/popular-2.png" alt="Chocolate Fudge">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/discover-1.jpg" alt="Birthday Party">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/popular-3.png" alt="Strawberry Bliss">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/discover-2.jpg" alt="Making Ice Cream">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+             <div class="gallery__item">
+                <img src="assets/discover-3.jpg" alt="Cookies and Cream">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+             <div class="gallery__item">
+                <img src="assets/banner-1.png" alt="Fresh Ingredients">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+            <div class="gallery__item">
+                <img src="assets/banner-1.png" alt="Fresh Ingredients">
+                <div class="overlay">
+                    <i class="ri-fullscreen-line"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="caption" id="caption"></div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/scrollreveal"></script> <script>
+        // 1. Load Navbar & Footer
+        fetch("navbar.html").then(r => r.text()).then(d => {
+            document.getElementById("navbar-placeholder").innerHTML = d;
+            setTimeout(() => {
+                const menuBtn = document.getElementById("menu-btn");
+                const navLinks = document.getElementById("nav-links");
+                if (menuBtn && navLinks) {
+                    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+                }
+            }, 500);
+        });
+        fetch("footer.html").then(r => r.text()).then(d => document.getElementById("footer-placeholder").innerHTML = d);
+
+        /* 2. SCROLL ANIMATION */
+        const scrollRevealOption = {
+            distance: "50px",
+            origin: "bottom",
+            duration: 1000,
+            easing: "cubic-bezier(0.23, 1, 0.32, 1)", // Smooth easing
+        };
+
+        // This makes images pop up one by one (interval)
+        ScrollReveal().reveal(".gallery__item", {
+            ...scrollRevealOption,
+            interval: 150, 
+            scale: 0.85, // Starts slightly smaller and grows
+        });
+
+        /* 3. LIGHTBOX LOGIC */
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const captionText = document.getElementById("caption");
+        const closeBtn = document.querySelector(".close-lightbox");
+        const galleryItems = document.querySelectorAll(".gallery__item");
+
+        galleryItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const img = item.querySelector("img");
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+                captionText.innerHTML = img.alt;
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
+  </body>
+</html>

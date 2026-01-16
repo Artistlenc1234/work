@@ -1,0 +1,348 @@
+/* franchise.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Titan+One&display=swap");
+
+:root {
+  --primary-color: #7D1C7A;
+  --accent-color: #E91E63;
+  --text-dark: #333333;
+  --text-light: #767268;
+  --extra-light: #FFF5F8;
+  --white: #ffffff;
+  --max-width: 1200px;
+  
+  --card-gradient: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 100%);
+  --body-bg: #F8F9FA;
+}
+
+* { padding: 0; margin: 0; box-sizing: border-box; }
+
+body { 
+  font-family: "Poppins", sans-serif; 
+  background-color: var(--body-bg);
+  min-height: 100vh;
+}
+
+/* --- HEADERS --- */
+
+.section__header {
+  font-family: "Titan One", cursive;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* --- SHARED STYLES FOR ALL 3 MAIN SECTION CARDS --- */
+.franchise__info__container,
+.franchise__models__container,
+.franchise__container {
+  background: var(--card-gradient);
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  padding: 3rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem; 
+}
+
+/* --- 1. TOP SECTION (PARTNER INFO) --- */
+
+.franchise__info__container {
+  margin-top: 2rem; 
+}
+
+.franchise__intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.franchise__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.franchise__card {
+  background-color: var(--white); 
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  transition: all 0.4s ease; /* Smoother transition */
+  box-shadow: 0 5px 15px rgba(125, 28, 122, 0.05); 
+  border: 2px solid transparent; /* Prepare for border change */
+}
+
+/* --- NEW HOVER EFFECT FOR INFO CARDS --- */
+.franchise__card:hover {
+  transform: translateY(-10px); /* Moves up higher */
+  background-color: #FFF0F6; /* Soft Pink Background */
+  border-color: #FFF5F8; /* Bright Pink Border */
+  box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2); /* Pinkish Shadow */
+}
+
+.franchise__card h3 {
+  font-family: "Titan One", cursive;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(125, 28, 122, 0.1);
+  padding-bottom: 10px;
+}
+
+.franchise__card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.franchise__card ul li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.franchise__card ul li::before {
+  content: "•"; 
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1.2rem;
+}
+
+/* --- 2. MIDDLE SECTION (MODELS) --- */
+
+.models__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.model__card {
+    background-color: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+/* --- NEW HOVER EFFECT FOR MODEL CARDS --- */
+.model__card:hover {
+    transform: translateY(-10px);
+    background-color: #FFF0F6; /* Soft Pink Background */
+    border-color: #FFF5F8; /* Bright Pink Border */
+    box-shadow: 0 15px 35px rgba(230, 154, 179, 0.2);
+}
+
+.model__image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.model__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.model__card:hover .model__image img {
+    transform: scale(1.1); /* Slightly larger zoom */
+}
+
+.model__content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.model__content h4 {
+    font-family: "Titan One", cursive;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.model__content p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* --- 3. BOTTOM SECTION (FORM) --- */
+
+.franchise__container {
+  max-width: 900px;
+  margin-bottom: 4rem; 
+}
+
+.franchise__content {
+  background-color: transparent;
+  padding: 0; 
+  box-shadow: none;
+}
+
+.form__title {
+  font-family: "Titan One", cursive;
+  color: var(--primary-color);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form__section h3 {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 10px;
+}
+
+.form__divider {
+  border: 0;
+  height: 1px;
+  background: rgba(125, 28, 122, 0.1);
+  margin: 2rem 0;
+}
+
+.form__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input__group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: var(--text-dark);
+  background-color: var(--white); 
+  border: 1px solid rgba(125, 28, 122, 0.2);
+  border-radius: 10px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  transition: 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.1);
+  background-color: #FFF0F6; /* Pink tint on focus */
+}
+
+.checkbox__group {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 2rem 0;
+}
+
+.checkbox__group input {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+}
+
+.checkbox__group label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.franchise__btn {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 50px;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  font-family: "Titan One", cursive;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(125, 28, 122, 0.3);
+}
+
+.franchise__btn:hover {
+  background-color: var(--accent-color);
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+}
+
+/* --- FORCE REMOVE DOTS --- */
+ul {
+    list-style: none !important;
+}
+
+.nav__links li::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* --- RESPONSIVE GRID --- */
+@media (min-width: 768px) {
+  .franchise__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .models__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .form__grid { 
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+/* --- ANIMATION STYLES --- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+
+@keyframes softPulse {
+  0% { box-shadow: 0 5px 15px rgba(125, 28, 122, 0.3); }
+  50% { box-shadow: 0 5px 25px rgba(233, 30, 99, 0.5); }
+  100% { box-shadow: 0 5px 15px rgba(125, 28, 122, 0.3); }
+}
+
+.franchise__btn {
+  animation: softPulse 3s infinite;
+}

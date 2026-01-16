@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="flavours.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <title>All Flavours | Rane-2.3</title>
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header class="page__header">
+        <div class="header-slideshow">
+            <div class="slide slide-1"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+        </div>
+
+        <div class="header-content">
+            <h1 class="section__header">Our Collection</h1>
+            <p class="section__description">From classic favorites to exotic new tastes</p>
+        </div>
+    </header>
+
+    <div class="section__container catalog-container">
+      
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+           <i class="ri-equalizer-line"></i> 
+           <span>Select Category</span>
+        </div>
+        
+        <ul class="filter-list">
+          <li class="filter-item active" onclick="filterSelection('all', this)">
+            <span class="radio-circle"></span> All
+          </li>
+          <li class="filter-item" onclick="filterSelection('tubs', this)">
+            <span class="radio-circle"></span> Tub Range
+          </li>
+          <li class="filter-item" onclick="filterSelection('cones', this)">
+            <span class="radio-circle"></span> Cones
+          </li>
+          <li class="filter-item" onclick="filterSelection('cakes', this)">
+            <span class="radio-circle"></span> Ice Cream Cakes
+          </li>
+          <li class="filter-item" onclick="filterSelection('sugarfree', this)">
+            <span class="radio-circle"></span> Sugar Free
+          </li>
+        </ul>
+      </aside>
+
+      <div class="popular__grid">
+        
+        <div class="popular__card" data-category="tubs">
+          <div class="card__image">
+             <img src="assets/popular-1.png" alt="Mango" />
+          </div>
+          <div class="popular__card__content">
+            <h4>Mango Tango Sorbet</h4>
+            <p class="category-tag">Tub Range</p>
+            <p class="volume-tag">750 ML</p> 
+            <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="popular__card" data-category="cakes">
+           <div class="card__image">
+              <img src="assets/popular-2.png" alt="Chocolate" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Choco Fudge Cake</h4>
+            <p class="category-tag">Ice Cream Cake</p>
+            <p class="volume-tag">1000 ML</p>
+            <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="cones">
+           <div class="card__image">
+              <img src="assets/popular-3.png" alt="Strawberry" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Strawberry Cone</h4>
+             <p class="category-tag">Cone</p>
+             <p class="volume-tag">120 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="sugarfree">
+           <div class="card__image">
+              <img src="assets/discover-1.jpg" alt="Cookie" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Keto Cookie Crunch</h4>
+             <p class="category-tag">Sugar Free</p>
+             <p class="volume-tag">500 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="tubs">
+           <div class="card__image">
+              <img src="assets/discover-3.jpg" alt="Vanilla" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Classic Vanilla Bean</h4>
+             <p class="category-tag">Tub Range</p>
+             <p class="volume-tag">750 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="cones">
+           <div class="card__image">
+              <img src="assets/popular-2.png" alt="Mint Cone" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Mint Choco Chip Cone</h4>
+             <p class="category-tag">Cone</p>
+             <p class="volume-tag">120 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="cakes">
+           <div class="card__image">
+              <img src="assets/popular-3.png" alt="Red Velvet" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Red Velvet Bliss</h4>
+             <p class="category-tag">Ice Cream Cake</p>
+             <p class="volume-tag">1000 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="sugarfree">
+           <div class="card__image">
+              <img src="assets/discover-2.jpg" alt="Berry" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Wild Berry Guilt-Free</h4>
+             <p class="category-tag">Sugar Free</p>
+             <p class="volume-tag">500 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="tubs">
+           <div class="card__image">
+              <img src="assets/popular-2.png" alt="Rocky Road" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Rocky Road Trip</h4>
+             <p class="category-tag">Tub Range</p>
+             <p class="volume-tag">750 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="cones">
+           <div class="card__image">
+              <img src="assets/popular-1.png" alt="Butterscotch" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Butterscotch Blast</h4>
+             <p class="category-tag">Cone</p>
+             <p class="volume-tag">120 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="cakes">
+           <div class="card__image">
+              <img src="assets/discover-1.jpg" alt="Oreo" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Oreo Obsession Cake</h4>
+             <p class="category-tag">Ice Cream Cake</p>
+             <p class="volume-tag">1000 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="popular__card" data-category="sugarfree">
+           <div class="card__image">
+              <img src="assets/discover-3.jpg" alt="Avocado" />
+           </div>
+          <div class="popular__card__content">
+            <h4>Avocado Lime Keto</h4>
+             <p class="category-tag">Sugar Free</p>
+             <p class="volume-tag">500 ML</p>
+             <div class="card__footer">
+              <!-- <p class="price">₹100.00</p> -->
+              <button class="add-btn">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // 1. FILTER FUNCTION
+        function filterSelection(category, element) {
+            const cards = document.getElementsByClassName("popular__card");
+            for (let i = 0; i < cards.length; i++) {
+                if (category === "all") {
+                    cards[i].style.display = "flex"; 
+                } else {
+                    if (cards[i].getAttribute("data-category") === category) {
+                        cards[i].style.display = "flex";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+            const buttons = document.getElementsByClassName("filter-item");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            element.classList.add("active");
+        }
+        
+        // 2. LOAD EXTERNAL FILES
+        fetch("navbar.html")
+            .then(r => r.text())
+            .then(d => document.getElementById("navbar-placeholder").innerHTML = d);
+
+        fetch("footer.html")
+            .then(r => r.text())
+            .then(d => document.getElementById("footer-placeholder").innerHTML = d);
+
+        // 3. MENU CLICK LOGIC (Event Delegation)
+        // This watches for clicks anywhere on the page
+        document.addEventListener('click', function(e) {
+            
+            // Check if the thing clicked is the Menu Button (or the icon inside it)
+            const menuBtn = e.target.closest('.nav__menu__btn');
+            
+            if (menuBtn) {
+                const navLinks = document.querySelector(".nav__links");
+                const icon = menuBtn.querySelector("i");
+                
+                // Toggle the menu
+                navLinks.classList.toggle("open");
+                
+                // Toggle the Icon
+                const isOpen = navLinks.classList.contains("open");
+                icon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+            }
+            
+            // Close menu if clicking a Link inside the menu
+            if (e.target.closest('.nav__links a')) {
+                const navLinks = document.querySelector(".nav__links");
+                const menuBtnIcon = document.querySelector(".nav__menu__btn i");
+                
+                navLinks.classList.remove("open");
+                if(menuBtnIcon) menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+            }
+        });
+    </script>
+  </body>
+</html>
