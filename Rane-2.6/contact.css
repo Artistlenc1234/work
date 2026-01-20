@@ -1,0 +1,235 @@
+/* =========================================
+   1. GLOBAL STYLES & IMPORTS (From style.css)
+   ========================================= */
+
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Titan+One&display=swap");
+
+:root {
+  /* BRAND COLORS */
+  --primary-color: #7D1C7A;       /* Deep Purple */
+  --primary-color-dark: #5a1258;
+  --accent-color: #E91E63;        /* Pink Swirl */
+  --text-dark: #333333;
+  --text-light: #767268;
+  --extra-light: #FFF5F8;         /* Light Pink Tint */
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+/* --- REUSABLE UTILITY CLASSES --- */
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem 1rem;
+}
+
+.section__header {
+  font-family: "Titan One", cursive;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 3rem;
+  letter-spacing: 1px;
+}
+
+.section__description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+/* Button Style (Used for 'Send Message') */
+.btn {
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-family: "Titan One", cursive;
+  color: var(--white);
+  background-color: var(--accent-color);
+  border-radius: 50px;
+  transition: 0.3s;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0px 10px 20px rgba(125, 28, 122, 0.3);
+}
+
+/* =========================================
+   2. CONTACT PAGE SPECIFIC STYLES
+   ========================================= */
+
+.contact__header {
+  padding-top: 8rem; /* Space for fixed navbar */
+  background-color: var(--extra-light);
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+/* Common Styles for Section Titles (Message & Info) */
+.contact__content h3 {
+  font-family: "Titan One", cursive;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+/* --- Left Side: Form --- */
+.form__box {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.input__group {
+  margin-bottom: 1.5rem;
+}
+
+.input__group input,
+.input__group textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  outline: none;
+  background-color: #fafafa;
+  transition: 0.3s;
+}
+
+.input__group input:focus,
+.input__group textarea:focus {
+  border-color: var(--accent-color);
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.1);
+}
+
+.form__box .btn {
+  width: 100%; /* Full width button for the form */
+}
+
+/* --- Right Side: Info Box --- */
+.info__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon__box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--extra-light);
+  color: var(--primary-color);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.info__item:hover .icon__box {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.info__item h4 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.info__item p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* --- Social Media Section --- */
+.contact__socials {
+  margin-top: 3rem;
+}
+
+.contact__socials h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.contact__socials .socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.contact__socials .socials a {
+  display: inline-flex;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.contact__socials .socials a:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* --- Responsive Media Query --- */
+@media (max-width: 768px) {
+  .contact__grid {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+    gap: 3rem;
+  }
+  
+  .contact__header {
+    padding-top: 6rem;
+  }
+}

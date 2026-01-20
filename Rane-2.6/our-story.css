@@ -1,0 +1,269 @@
+/* our-story.css */
+
+/* 1. FONTS & VARIABLES */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Titan+One&display=swap");
+
+:root {
+  --primary-color: #7D1C7A;       /* Deep Purple */
+  --accent-color: #E91E63;        /* Pink */
+  --text-dark: #333333;
+  --text-light: #767268;
+  --extra-light: #FFF5F8;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+/* 2. RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--white);
+  color: var(--text-dark);
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 3. LAYOUT UTILITIES */
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  font-family: "Titan One", cursive;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section__description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+/* 4. PAGE HEADER (Updated with Background Image) */
+.page__header {
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  
+  /* Purple Overlay + Image */
+  background-image: 
+    linear-gradient(rgba(125, 28, 122, 0.7), rgba(125, 28, 122, 0.7)),
+    url("assets/bg-our-story.png"); /* Make sure this image is in your assets folder */
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Force header text to be white on this page */
+.page__header .section__header {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.page__header .section__description {
+  color: #f3e5f5;
+}
+
+/* 5. STORY SECTION (Text + Image) */
+.story__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.story__image img {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.story__content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-family: "Titan One", cursive;
+}
+
+.story__content p {
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  line-height: 1.8rem;
+}
+
+/* Stats Counter */
+.stats__flex {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat__card h4 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stat__card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* 6. VALUES SECTION (Purple Background) */
+.values__section {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.values__grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.value__card {
+  background: rgba(255, 255, 255, 0.1); /* Glass effect */
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.value__card i {
+  font-size: 3rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.value__card h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.value__card p {
+  font-size: 0.9rem;
+  color: #f3e5f5;
+}
+
+/* 7. TEAM SECTION */
+.team__grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team__card {
+  text-align: center;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.team__card:hover {
+  transform: translateY(-10px);
+}
+
+.team__img img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%; /* Circle Image */
+  margin: 0 auto 1rem auto;
+  border: 4px solid var(--extra-light);
+}
+
+.team__card h4 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.team__card p {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* 8. FOOTER REMOVED 
+   (Styles are now in footer.css to avoid conflicts) 
+*/
+
+/* 9. RESPONSIVE MEDIA QUERIES */
+@media (width > 768px) {
+  .story__grid {
+    grid-template-columns: 1fr 1fr; /* Image left, text right */
+  }
+  
+  .values__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .team__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* --- SCATTERED TEXT ANIMATION STYLES --- */
+
+/* 1. The container for the text */
+.scramble-text {
+  opacity: 1; /* Keep container visible */
+}
+
+/* 2. The individual words (JavaScript will create these spans) */
+.word-span {
+  display: inline-block;
+  white-space: nowrap; /* Keep words together */
+  opacity: 0; /* Hidden initially */
+  filter: blur(10px); /* Blurry initially */
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1); /* "Premium" smooth easing */
+  will-change: transform, opacity, filter;
+}
+
+/* 3. The 'Active' state (When scrolled into view) */
+.scramble-text.visible .word-span {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translate(0, 0) rotate(0deg) !important; /* Force return to original place */
+}
+
+/* 4. Standard Fade-Up for regular paragraphs (easier to read) */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

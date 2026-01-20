@@ -1,0 +1,599 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Titan+One&display=swap");
+
+:root {
+  /* BRAND COLORS */
+  --primary-color: #7D1C7A;       /* Deep Purple */
+  --primary-color-dark: #5a1258;
+  --accent-color: #E91E63;        /* Pink Swirl */
+  --text-dark: #333333;
+  --text-light: #767268;
+  --extra-light: #FFF5F8;         /* Light Pink Tint */
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--white);
+
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+}
+
+/* --- REUSABLE CLASS STYLES --- */
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+
+.section__header {
+  font-family: "Titan One", cursive;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 3rem;
+  letter-spacing: 1px;
+}
+
+.section__description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-family: "Titan One", cursive;
+  color: var(--white);
+  background-color: var(--accent-color);
+  border-radius: 50px;
+  transition: 0.3s;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0px 10px 20px rgba(125, 28, 122, 0.3);
+}
+
+/* --- HERO / HEADER SECTION --- */
+
+header {
+  /* Combined grid layout and styling */
+  padding-top: 5rem;
+  display: grid;
+  background-color: var(--extra-light);
+}
+
+.header__image {
+  position: relative;
+  isolation: isolate;
+}
+
+.header__image::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  aspect-ratio: 1;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.header__image img {
+  max-width: 675px;
+  border-radius: 20px;
+  margin: auto; /* Centers image in mobile */
+}
+
+.header__content {
+  padding-block: 2rem 5rem;
+  padding-inline: 1rem;
+}
+
+.header__content h1 {
+  font-family: "Titan One", cursive;
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  font-weight: 400; 
+  color: var(--primary-color);
+  text-align: center;
+  line-height: 4.5rem;
+  letter-spacing: 1px;
+}
+
+.header__content h1 span {
+  color: var(--accent-color);
+}
+
+.header__btn {
+  margin-block: 2rem;
+  text-align: center;
+}
+
+.header__content .socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.header__content .socials a {
+  display: inline-block;
+  padding: 8px 10px;
+  font-size: 1.125rem;
+  color: var(--primary-color);
+  background-color: var(--white);
+  border-radius: 100%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.header__content .socials a:hover {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+/* --- POPULAR SECTION --- */
+
+.popular__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 4rem 1rem;
+}
+
+.popular__card {
+  position: relative;
+  isolation: isolate;
+}
+
+.popular__card::before {
+  position: absolute;
+  content: "";
+  bottom: 5rem;
+  left: 0;
+  height: 60%;
+  width: 100%;
+  z-index: -1;
+  transition: 0.5s;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.popular__card:hover::before {
+  height: 90%;
+}
+
+.popular__card:nth-child(1)::before { background-color: #F8BBD0; }
+.popular__card:nth-child(2)::before { background-color: #E1BEE7; }
+.popular__card:nth-child(3)::before { background-color: #FCE4EC; }
+
+.popular__card img {
+  max-width: 250px;
+  margin-inline: auto;
+  border-radius: 15px;
+}
+
+.popular__card__content {
+  padding: 1rem;
+  background-color: var(--white);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+}
+
+.popular__card__content h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.popular__btn {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* --- DISCOVER / MOST SELLING SECTION --- */
+
+.discover__container .section__description {
+  margin-block: 1rem;
+}
+
+.discover__grid {
+  margin-top: 4rem;
+  display: grid;
+  gap: 4rem;
+}
+
+.discover__card {
+  display: grid;
+  gap: 2rem;
+  /* overflow: hidden; */
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.discover__card img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.discover__card h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.discover__card__content {
+  text-align: center;
+}
+
+/* --- NEW BACKGROUND UTILITY --- */
+
+/* This handles the full-width background color */
+.section__background {
+  width: 100%;
+  background-color: var(--extra-light); /* Matches your Header color */
+  
+  /* Optional: Add a subtle top border to separate from the Wave */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure the inner container inside the background behaves correctly */
+.section__background .section__container {
+  /* We remove the default padding because the outer section can handle it if needed, 
+     but keeping it here ensures the content stays pushed in. */
+  padding: 5rem 1rem;
+}
+
+/* OPTIONAL: Make the cards inside this pink section purely white to pop */
+.discover__card {
+  background-color: var(--white);
+  box-shadow: 0 10px 30px rgba(125, 28, 122, 0.05); /* Slight purple tint shadow */
+}
+
+/* --- Customer Review SECTION --- */
+
+/* --- CUSTOMER REVIEWS (MARQUEE) --- */
+
+.reviews__container {
+  overflow: hidden; /* Hides the scrolling parts that go off screen */
+  background: linear-gradient(180deg, #ffffff 0%, #fff0f6 40%, #f8e1f4 100%);  
+  padding-bottom: 6rem;
+  padding-top: 0.5rem;
+}
+
+.reviews__container .section__description {
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* Marquee Container */
+.marquee {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  mask-image: linear-gradient(
+    to right,
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 10%,
+    hsl(0 0% 0% / 1) 90%,
+    hsl(0 0% 0% / 0)
+  );
+}
+
+/* The grouping of cards that actually moves */
+.marquee__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  min-width: 100%;
+  animation: scroll-x 30s linear infinite;
+}
+
+/* Reverse animation for the second row */
+.marquee--reverse .marquee__group {
+  animation-direction: reverse;
+  animation-delay: -3s;
+}
+
+/* Pause animation on hover for readability */
+.marquee:hover .marquee__group {
+  animation-play-state: paused;
+}
+
+/* Review Card Styling */
+.review__card {
+  width: 350px;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.02);
+  transition: transform 0.3s ease;
+}
+
+.review__card:hover {
+  transform: scale(1.05); /* Pop up effect */
+  border-color: var(--accent-color);
+}
+
+.review__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.review__header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+}
+
+.review__header h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.stars {
+  color: #FFC107; /* Gold color for stars */
+  font-size: 0.9rem;
+}
+
+.review__card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6rem;
+  font-style: italic;
+}
+
+/* Keyframes for the scrolling */
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 2rem)); /* -100% minus the gap */
+  }
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+  .review__card {
+    width: 280px;
+  }
+  
+  .marquee {
+    gap: 1rem;
+  }
+  
+  .marquee__group {
+    gap: 1rem;
+    animation-duration: 20s; /* Slightly faster on mobile looks better */
+  }
+}
+
+
+/* ---------------------- */
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet / Small Laptop */
+@media (width > 540px) {
+  .popular__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .discover__card img {
+    height: 300px;
+  }
+
+  .banner__image {
+    min-height: 300px;
+  }
+}
+
+/* Desktop */
+@media (width > 768px) {
+  /* Header Layout */
+  header {
+    padding-top: 0;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, calc(var(--max-width) / 2))
+      minmax(0, calc(var(--max-width) / 2))
+      minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .header__image {
+    grid-column: 3/5;
+  }
+
+  .header__content {
+    grid-area: 1/2/2/3;
+    padding-block: 5rem;
+  }
+
+  .header__content :is(h1, .section__description, .header__btn) {
+    text-align: left;
+  }
+
+  .header__content .socials {
+    justify-content: flex-start;
+  }
+
+  /* Popular Section Alignment */
+  .popular__container .section__header {
+    text-align: left;
+  }
+
+  .popular__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Discover Section Alignment */
+  .discover__container :is(.section__header, .section__description) {
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .discover__card {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .discover__card img {
+    height: 350px;
+  }
+
+  /* Alternating layout for cards */
+  .discover__card:nth-child(2) .discover__card__content {
+    order: -1;
+  }
+
+  .discover__card__content :is(h4, .section__description) {
+    text-align: left;
+  }
+
+  /* Banner Layout */
+  .banner {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, calc(var(--max-width) / 2))
+      minmax(0, calc(var(--max-width) / 2))
+      minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .banner__image {
+    grid-column: 3/5;
+    min-height: 100%;
+  }
+
+  .banner__content {
+    grid-area: 1/2/2/3;
+    padding-block: 2rem;
+    padding-inline: 1rem 2rem;
+  }
+
+  .banner__content :is(.section__header, .section__description) {
+    text-align: left;
+  }
+}
+
+@media (width > 1024px) {
+  .popular__grid {
+    gap: 2rem;
+  }
+}
+
+
+/* -------------------------------------------------------------- */
+/* --- WAVE ANIMATION STYLES --- */
+
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 120px; /* Controls the height of the wave area */
+  background: transparent;
+  overflow: hidden;
+  margin-top: -50px; /* Pulls it up slightly to blend with previous section if needed */
+  margin-bottom: 2rem;
+}
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+/* Animation for the floating effect */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+
+/* Mobile Responsiveness for Wave */
+@media (max-width: 768px) {
+  .wave-container {
+    height: 80px; /* Smaller waves on mobile */
+  }
+}
+/* -------------------------------------------------------------- */
