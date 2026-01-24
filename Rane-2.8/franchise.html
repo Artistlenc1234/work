@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="franchise.css" />
+    
+    <title>Franchise Inquiry | Rane's CreamBerg</title>
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <section class="section__container franchise__models__container">
+        <h2 class="section__header" style="text-align: center; margin-bottom: 3rem;">Our Franchise Models</h2>
+        
+        <div class="models__grid">
+            <div class="model__card">
+                <div class="model__image">
+                    <img src="assets/kiosk.jpg" alt="Ice Cream Kiosk" />
+                </div>
+                <div class="model__content">
+                    <h4>ICECREAM KIOSK</h4>
+                    <p>Kiosks are small, temporary booths placed in areas with high foot traffic that are usually located in malls or concourses.</p>
+                </div>
+            </div>
+
+            <div class="model__card">
+                <div class="model__image">
+                    <img src="assets/cafe.jpg" alt="Ice Cream Cafe" />
+                </div>
+                <div class="model__content">
+                    <h4>ICECREAM CAFE</h4>
+                    <p>Icecream cafe is where the customer can have icecream as well as other fast food items in a relaxed environment.</p>
+                </div>
+            </div>
+
+            <div class="model__card">
+                <div class="model__image">
+                    <img src="assets/parlour.jpg" alt="Ice Cream Parlour" />
+                </div>
+                <div class="model__content">
+                    <h4>ICECREAM PARLOUR</h4>
+                    <p>Ice cream parlors are dedicated places that sell ice cream to consumers, offering a wide variety of flavors and toppings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container franchise__info__container">
+        <h2 class="section__header" style="text-align: center;">Become a Franchise Partner</h2>
+        <p class="franchise__intro">
+            Rane’s Creamberg invites you to join a growing family of entrepreneurs who believe in delivering happiness through pure, rich and authentic ice-cream.
+        </p>
+
+        <div class="franchise__grid">
+            <div class="franchise__card">
+                <h3>Why Partner With Us</h3>
+                <ul>
+                    <li>Recognized & Trusted Brand</li>
+                    <li>Strong Product Variety and Demand</li>
+                    <li>Premium Quality with Real Ingredients</li>
+                    <li>Consistent Customer Repeat Value</li>
+                </ul>
+            </div>
+
+            <div class="franchise__card">
+                <h3>Business Model</h3>
+                <ul>
+                    <li>Takeaway & Counter Service</li>
+                    <li>High Footfall Local Market Model</li>
+                    <li>Franchise Setup Designed for Low Overheads</li>
+                </ul>
+            </div>
+
+            <div class="franchise__card">
+                <h3>Support You Receive</h3>
+                <ul>
+                    <li>Shop Setup Guidelines</li>
+                    <li>Branding & Store Design Support</li>
+                    <li>Product Supply & Inventory Assistance</li>
+                </ul>
+            </div>
+
+            <div class="franchise__card">
+                <h3>What You Need</h3>
+                <ul>
+                    <li>Suitable shop space (100–300 sq. ft.)</li>
+                    <li>Basic interior fit-out</li>
+                    <li>Passion to run and grow a customer-focused business</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container franchise__container">
+      <div class="franchise__content">
+        <h2 class="form__title">Franchise Application</h2>
+        
+        <form id="franchise-form">
+            <input type="hidden" name="access_key" value="80d2768b-5d30-4359-9a58-d81b20d401bb">
+
+            <div class="form__section">
+                <h3>Personal Details</h3>
+                <div class="form__grid">
+                    <input type="text" name="name" placeholder="Your Name" />
+                    <input type="email" name="email" placeholder="Your Email" />
+                </div>
+                <div class="form__grid">
+                    <input type="tel" name="phone" placeholder="Your Phone Number" />
+                    <input type="text" name="address" placeholder="Your Address" />
+                </div>
+            </div>
+
+            <hr class="form__divider">
+
+            <div class="form__section">
+                <h3>Business & Work Experience</h3>
+                <input type="text" name="current_job" placeholder="Current Job/Business" class="full__width" />
+                
+                <div class="form__grid">
+                    <div class="input__group">
+                        <label>Have you ever owned a business?</label>
+                        <select name="owned_business">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="input__group">
+                        <label>If Yes, then what type?</label>
+                        <input type="text" name="business_type" placeholder="Type of business" />
+                    </div>
+                </div>
+            </div>
+
+            <hr class="form__divider">
+
+            <div class="form__section">
+                <h3>Location Information</h3>
+                <div class="form__grid">
+                    <input type="text" name="city" placeholder="City" />
+                    <input type="text" name="location_preference" placeholder="Location Preference" />
+                </div>
+
+                <div class="input__group">
+                    <label>Do you own an existing commercial space?</label>
+                    <select name="own_space">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+
+                <div class="input__group">
+                    <label>If "Yes", describe location (Corner shop / Main road):</label>
+                    <textarea name="shop_description" rows="3" placeholder="Describe the location..."></textarea>
+                </div>
+
+                <input type="text" name="area_sqft" placeholder="Retail Space Area (Sq. Ft)" class="full__width" />
+            </div>
+
+            <div class="checkbox__group">
+                <input type="checkbox" id="agreement" name="agreement">
+                <label for="agreement">
+                    By submitting this form, I certify that the information furnished in this Rane's Creamberg Ice Cream franchise request is true and correct.
+                </label>
+            </div>
+            
+            <button class="btn franchise__btn">Submit Application</button>
+
+            <p id="form-message" style="display:none; text-align: center; margin-top: 1rem; font-weight: 600;"></p>
+        </form>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script> <script>
+        // --- NAVBAR LOADING LOGIC --- 
+        // We keep this here because main.js is for logic that runs AFTER page load.
+        // Since Fetch is async, it's safer to keep layout loading separate or in a layout.js
+        
+        const loadComponent = (file, elementId, callback) => {
+            fetch(file)
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+                if (callback) callback();
+            });
+        };
+
+        loadComponent("navbar.html", "navbar-placeholder", () => {
+            // Re-initialize Hamburger menu after HTML loads
+            const menuBtn = document.querySelector(".nav__menu__btn"); // Changed to match navbar.css class
+            const navLinks = document.querySelector(".nav__links");
+            const menuBtnIcon = menuBtn ? menuBtn.querySelector("i") : null;
+
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener("click", () => {
+                    navLinks.classList.toggle("open");
+                    const isOpen = navLinks.classList.contains("open");
+                    if(menuBtnIcon) {
+                        menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+                    }
+                });
+                navLinks.addEventListener("click", () => {
+                    navLinks.classList.remove("open");
+                    if(menuBtnIcon) {
+                        menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+                    }
+                });
+            }
+        });
+
+        loadComponent("footer.html", "footer-placeholder");
+    </script>
+  </body>
+</html>

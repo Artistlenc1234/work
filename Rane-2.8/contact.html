@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Rane's Creamberg</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="footer.css" />
+  </head>
+  <body>
+    
+    <div id="navbar-placeholder"></div>
+
+    <header class="contact__header">
+      <div class="section__container">
+        <h2 class="section__header">Get In Touch</h2>
+        <p class="section__description">
+          Have a sweet question or a bulk order? We are here to help!
+        </p>
+      </div>
+    </header>
+
+    <section class="section__container contact__container">
+      <div class="contact__grid">
+        
+        <div class="contact__content form__box">
+          <h3>Send us a Message</h3>
+          <form action="#">
+            <div class="input__group">
+              <input type="text" placeholder="Your Name" required />
+            </div>
+            <div class="input__group">
+              <input type="email" placeholder="Your Email" required />
+            </div>
+            <div class="input__group">
+              <input type="text" placeholder="Subject" />
+            </div>
+            <div class="input__group">
+              <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact__content info__box">
+          <h3>Contact Information</h3>
+          <div class="info__details">
+            <div class="info__item">
+              <div class="icon__box"><i class="ri-map-pin-fill"></i></div>
+              <div>
+                <h4>Location</h4>
+                <p>123 Ice Cream Lane, Sweet City, 400001</p>
+              </div>
+            </div>
+            
+            <div class="info__item">
+              <div class="icon__box"><i class="ri-phone-fill"></i></div>
+              <div>
+                <h4>Phone</h4>
+                <p>+91 98765 43210</p>
+              </div>
+            </div>
+
+            <div class="info__item">
+              <div class="icon__box"><i class="ri-mail-open-fill"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p>hello@ranescreamberg.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__socials">
+             <h4>Follow Us</h4>
+             <ul class="socials">
+                <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+                <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-placeholder").innerHTML = data;
+            const menuBtn = document.querySelector(".nav__menu__btn");
+            const navLinks = document.querySelector(".nav__links");
+            const menuBtnIcon = menuBtn ? menuBtn.querySelector("i") : null;
+            if (menuBtn && navLinks) {
+                menuBtn.addEventListener("click", () => {
+                    navLinks.classList.toggle("open");
+                    const isOpen = navLinks.classList.contains("open");
+                    if(menuBtnIcon) menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+                });
+                navLinks.addEventListener("click", () => {
+                    navLinks.classList.remove("open");
+                    if(menuBtnIcon) menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+                });
+            }
+        });
+
+        fetch("footer.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    </script>
+  </body>
+</html>
