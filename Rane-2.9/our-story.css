@@ -1,0 +1,234 @@
+/* our-story.css */
+
+:root {
+    --bg-pink: #fae3eb;
+    --dark-purple: #5e235d;
+    --accent-pink: #c94c7a;
+    --text-body: #2c2c2c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-pink);
+    font-family: 'Lora', serif;
+    color: var(--text-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* --- FIX FOR NAVBAR DOTS --- */
+#navbar-placeholder ul, 
+#navbar-placeholder li {
+    list-style-type: none !important;
+    list-style: none !important;
+}
+
+/* --- Header Animations --- */
+.header-container {
+    text-align: center;
+    padding: 120px 20px 40px; 
+    opacity: 0; 
+    animation: fadeHeaderIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeHeaderIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+h1 span {
+    display: block;
+    opacity: 0;
+    animation: slideUpText 0.8s ease-out forwards;
+}
+
+.line-one {
+    font-size: 3.5rem; 
+    color: var(--accent-pink);
+    font-weight: 400;
+    font-style: italic;
+    animation-delay: 0.2s;
+}
+
+.line-two {
+    font-size: 5rem;
+    color: var(--dark-purple);
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation-delay: 0.4s;
+}
+
+@keyframes slideUpText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Timeline Core --- */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 1. The Background Track (Faint, Static) */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    bottom: 0; 
+    left: 50%;
+    width: 4px;
+    /* Faint opacity for the track */
+    background-image: linear-gradient(to bottom, var(--dark-purple) 33%, rgba(255,255,255,0) 0%);
+    background-position: right;
+    background-size: 4px 25px;
+    background-repeat: repeat-y;
+    transform: translateX(-50%);
+    opacity: 0.1; /* Very faint */
+    z-index: 0;
+}
+
+/* 2. The Active "Driving" Line (Dark, Dynamic) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    transform: translateX(-50%);
+    
+    /* Full opacity for the filling line */
+    background-image: linear-gradient(to bottom, var(--dark-purple) 33%, rgba(255,255,255,0) 0%);
+    background-position: right;
+    background-size: 4px 25px;
+    background-repeat: repeat-y;
+    
+    z-index: 0;
+    
+    /* THE ANIMATION MAGIC: JS updates this variable */
+    height: var(--line-height, 0%); 
+    max-height: 100%;
+    transition: height 0.1s linear; /* Smoothness */
+}
+
+.event-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 1;
+    opacity: 0; 
+    transition: all 1s ease-out;
+}
+
+.text-col { width: 40%; padding: 20px; }
+.image-col { width: 50%; display: flex; justify-content: center; align-items: center; }
+
+/* Scroll Trigger Classes */
+.event-row.visible { opacity: 1; }
+
+.event-row.left-text .text-col { transform: translateX(-50px); transition: transform 1s ease-out; }
+.event-row.left-text .image-col { transform: translateX(50px); transition: transform 1s ease-out; }
+.event-row.right-text .text-col { transform: translateX(50px); transition: transform 1s ease-out; }
+.event-row.right-text .image-col { transform: translateX(-50px); transition: transform 1s ease-out; }
+
+.event-row.visible .text-col, .event-row.visible .image-col { transform: translateX(0); }
+
+/* Typography */
+.year-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--dark-purple);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #333;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(94, 35, 93, 0.05);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.tag-bubble {
+    display: inline-block;
+    background: #333; color: #fff;
+    padding: 2px 8px; font-size: 0.8rem;
+    border-radius: 4px; margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Blob Animations */
+.blob-container {
+    width: 100%;
+    min-height: 300px;
+    background-color: #fff;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    overflow: hidden;
+    box-shadow: 10px 10px 40px rgba(94, 35, 93, 0.15);
+    display: flex; justify-content: center; align-items: center;
+    padding: 20px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: floatBlob 6s ease-in-out infinite;
+}
+
+@keyframes floatBlob {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.blob-container:hover {
+    transform: scale(1.05) translateY(-10px);
+    cursor: pointer;
+}
+
+.blob-container img { max-width: 100%; height: 100%; object-fit: contain; }
+
+/* Layout Variations */
+.event-row.left-text { flex-direction: row; }
+.event-row.left-text .text-col { text-align: right; }
+.event-row.right-text { flex-direction: row-reverse; }
+.event-row.right-text .text-col { text-align: left; }
+
+.blob-1 { border-radius: 64% 36% 24% 76% / 59% 29% 71% 41%; animation-delay: 0s; }
+.blob-2 { border-radius: 34% 66% 75% 25% / 37% 35% 65% 63%; animation-delay: 1s; }
+.blob-3 { border-radius: 71% 29% 37% 63% / 54% 28% 72% 46%; animation-delay: 2s; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-container { padding-top: 80px; }
+    .line-one { font-size: 2.5rem; }
+    .line-two { font-size: 3.5rem; }
+    
+    /* Move BOTH lines to the left */
+    .timeline::before,
+    .timeline::after { 
+        left: 20px; 
+    }
+    
+    .event-row, .event-row.right-text, .event-row.left-text { flex-direction: column-reverse; margin-bottom: 60px; }
+    .text-col, .image-col { width: 100%; text-align: left !important; }
+    .text-col { padding-left: 50px; transform: translateY(20px); }
+    .image-col { transform: translateY(20px); }
+    .year-label { font-size: 3.5rem; }
+    .event-row.left-text .text-col, .event-row.right-text .text-col { transform: translateY(20px); }
+    .event-row.visible .text-col { transform: translateY(0); }
+}
